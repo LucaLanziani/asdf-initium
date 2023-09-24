@@ -74,71 +74,70 @@ install_version() {
 	)
 }
 
-
 get_download_url() {
-  local version
-  version="$1"
-  local repo
-  repo=$2
-  local arch
-  arch="$(get_arch)"
-  local platform
-  platform="$(get_platform)"
-  local ext
-  ext="$(get_ext)"
-  echo "${repo}/releases/download/v${version}/initium-cli_${platform}_${arch}.${ext}"
+	local version
+	version="$1"
+	local repo
+	repo=$2
+	local arch
+	arch="$(get_arch)"
+	local platform
+	platform="$(get_platform)"
+	local ext
+	ext="$(get_ext)"
+	echo "${repo}/releases/download/v${version}/initium-cli_${platform}_${arch}.${ext}"
 }
 
 get_arch() {
-  arch=$(uname -m | tr '[:upper:]' '[:lower:]')
-  case ${arch} in
-    arm64)
-      arch='arm64'
-      ;;
-    arm6)
-      arch='arm6'
-      ;;
-    x86_64)
-      arch='x86_64'
-      ;;
-    aarch64)
-      arch='arm64'
-      ;;
-    i386)
-      arch='i386'
-      ;;
-  esac
+	arch=$(uname -m | tr '[:upper:]' '[:lower:]')
+	case ${arch} in
+	arm64)
+		arch='arm64'
+		;;
+	arm6)
+		arch='arm6'
+		;;
+	x86_64)
+		arch='x86_64'
+		;;
+	aarch64)
+		arch='arm64'
+		;;
+	i386)
+		arch='i386'
+		;;
+	esac
 
-  echo ${arch}
+	echo "${arch}"
 }
 
 get_platform() {
-  plat=$(uname | tr '[:upper:]' '[:lower:]')
-  case ${plat} in
-    darwin)
-      plat='Darwin'
-      ;;
-    linux)
-      plat='Linux'
-      ;;
-    windows)
-      plat='Windows'
-      ;;
-  esac
+	plat=$(uname | tr '[:upper:]' '[:lower:]')
+	case ${plat} in
+	darwin)
+		plat='Darwin'
+		;;
+	linux)
+		plat='Linux'
+		;;
+	windows)
+		plat='Windows'
+		;;
+	esac
 
-  echo ${plat}
+	echo "${plat}"
 }
 
 get_ext() {
-  plat=$(uname | tr '[:upper:]' '[:lower:]')
-  case ${plat} in
-    windows)
-      ext='zip'
-      ;;
-    *)
-      ext='tar.gz'
-      ;;
-  esac
+	plat=$(uname | tr '[:upper:]' '[:lower:]')
+	case ${plat} in
+	windows)
+		ext='zip'
+		;;
+	*)
+		ext='tar.gz'
+		;;
+	esac
 
-  echo ${ext}
+	echo "${ext}"
 }
